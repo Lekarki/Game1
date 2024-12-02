@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cqs3ppplpxk0t"]
+
+[ext_resource type="Texture2D" uid="uid://ln8q2ypo5tw0" path="res://textures/Brick_10___128x128.png" id="1_lsai3"]
+[ext_resource type="Texture2D" uid="uid://bqyyrtmai846" path="res://textures/Normal_maps/Brick_10___128x128_NORMAL.png" id="2_vhr4k"]
+
+[resource]
+albedo_texture = ExtResource("1_lsai3")
+metallic_specular = 0.0
+normal_enabled = true
+normal_scale = -2.62
+normal_texture = ExtResource("2_vhr4k")
+texture_filter = 0

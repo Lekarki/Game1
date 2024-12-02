@@ -1,0 +1,21 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=3 format=3 uid="uid://cbq0fjt852o4f"]
+
+[sub_resource type="Curve" id="Curve_vnx32"]
+max_value = 2.0
+_data = [Vector2(0.248705, 1.27365), 0.0, -4.49057, 0, 0, Vector2(0.984456, 0.0268369), -1.59351, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jpblt"]
+curve = SubResource("Curve_vnx32")
+
+[resource]
+lifetime_randomness = 0.3
+spread = 36.652
+radial_velocity_min = 8.0
+radial_velocity_max = 10.0
+radial_velocity_curve = SubResource("CurveTexture_jpblt")
+gravity = Vector3(2.08165e-12, -9.8, 2.08165e-12)
+linear_accel_min = -6.36
+linear_accel_max = 2.0
+scale_min = 0.05
+scale_max = 0.2

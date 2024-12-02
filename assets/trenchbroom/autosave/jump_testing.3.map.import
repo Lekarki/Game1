@@ -1,0 +1,14 @@
+[remap]
+
+importer="qodot.map"
+type="Resource"
+uid="uid://bnifdldswffux"
+path="res://.godot/imported/jump_testing.3.map-5217c8fd6efa55f1767af1312e4c2ca6.tres"
+
+[deps]
+
+source_file="res://assets/trenchbroom/autosave/jump_testing.3.map"
+dest_files=["res://.godot/imported/jump_testing.3.map-5217c8fd6efa55f1767af1312e4c2ca6.tres"]
+
+[params]
+

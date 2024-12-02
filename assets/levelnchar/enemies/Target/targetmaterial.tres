@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bxi68djr6mg04"]
+
+[ext_resource type="Texture2D" uid="uid://kkdk2n78y7qo" path="res://assets/levelnchar/enemies/Target/Target-sprite.png" id="1_2bks1"]
+
+[resource]
+transparency = 1
+albedo_texture = ExtResource("1_2bks1")
+backlight_enabled = true
+backlight = Color(0.663893, 0.578079, 0.502679, 1)
+billboard_mode = 1

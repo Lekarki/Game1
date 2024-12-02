@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://8p3p0n0n7um4"
+path.s3tc="res://.godot/imported/shotgun_Concrete_map.png-73b787b6169aba0d7370b3cea1fecfdf.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "9bc16b3cb751a9b4f197ccb2c076d272"
+}
+
+[deps]
+
+source_file="res://assets/weapons/shotgun_Concrete_map.png"
+dest_files=["res://.godot/imported/shotgun_Concrete_map.png-73b787b6169aba0d7370b3cea1fecfdf.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://assets/shotgun_Concrete_map.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

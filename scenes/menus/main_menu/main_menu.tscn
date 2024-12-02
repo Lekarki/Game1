@@ -1,0 +1,124 @@
+[gd_scene load_steps=6 format=3 uid="uid://b67wncur1y0ya"]
+
+[ext_resource type="Script" path="res://scenes/menus/main_menu/main_menu.gd" id="1_a84mm"]
+[ext_resource type="Texture2D" uid="uid://b5r5wel7uyia1" path="res://textures/redbricks_128x128.png" id="2_jjbtc"]
+[ext_resource type="PackedScene" uid="uid://bahcif4hbh4s3" path="res://scenes/menus/options_menu/options.tscn" id="3_s5qlp"]
+
+[sub_resource type="SystemFont" id="SystemFont_572d2"]
+font_names = PackedStringArray("Copperplate")
+font_weight = 600
+
+[sub_resource type="SystemFont" id="SystemFont_hmpv3"]
+font_names = PackedStringArray("Copperplate")
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a84mm")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+texture_filter = 1
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 480.0
+texture = ExtResource("2_jjbtc")
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="seperator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GameNameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85557, 0.85639, 0.855169, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.313726)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_constants/shadow_outline_size = 100
+theme_override_fonts/font = SubResource("SystemFont_572d2")
+theme_override_font_sizes/font_size = 56
+text = "Game Title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="seperator5" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="seperator7" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="seperator6" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="seperator3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="seperator4" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Start_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_hmpv3")
+theme_override_font_sizes/font_size = 22
+text = "Start Game"
+
+[node name="Practise_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_hmpv3")
+theme_override_font_sizes/font_size = 22
+text = "Practise"
+
+[node name="Options_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_hmpv3")
+theme_override_font_sizes/font_size = 22
+text = "Options"
+
+[node name="Exit_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_hmpv3")
+theme_override_font_sizes/font_size = 22
+text = "Quit 
+"
+
+[node name="options_menu" parent="." instance=ExtResource("3_s5qlp")]
+visible = false
+layout_mode = 1

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://b2e207o6pm4p3"]
+
+[node name="simpleEnemy" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]

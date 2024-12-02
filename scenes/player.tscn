@@ -1,0 +1,276 @@
+[gd_scene load_steps=13 format=3 uid="uid://cmn5f2jl26tcr"]
+
+[ext_resource type="Script" path="res://scripts/fps-controller.gd" id="1_ncovs"]
+[ext_resource type="Script" path="res://scripts/CameraHolder.gd" id="2_ovw0s"]
+[ext_resource type="PackedScene" uid="uid://chwfkwx83bmrh" path="res://scenes/shotgunbetter.tscn" id="3_7cgrg"]
+[ext_resource type="PackedScene" uid="uid://dujhlbt2vphbv" path="res://scenes/weapons/pistolbetter.tscn" id="4_2c5mb"]
+[ext_resource type="PackedScene" uid="uid://jr3kcb13t17g" path="res://scenes/knife.tscn" id="4_3qsl6"]
+[ext_resource type="PackedScene" uid="uid://dlvhw141v8dnn" path="res://scenes/HUD.tscn" id="5_b21fg"]
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="6_kitx0"]
+[ext_resource type="Texture2D" uid="uid://cnpa5w5osqtsg" path="res://textures/crosshair.png" id="7_i3vt7"]
+[ext_resource type="AudioStream" uid="uid://bhv5rue460gcb" path="res://assets/sfx/footsteps/footstepsinglev3.mp3" id="8_u8ywf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eaa8y"]
+radius = 0.7
+height = 3.00499
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_d2lma"]
+radius = 0.7
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_430lx"]
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_ncovs")
+Walk_Speed = 14.0
+ground_accel = 6.0
+ground_decel = 8.0
+ground_friction = 3.0
+Jump_Peak_Time = 0.575
+Jump_Fall_Time = 0.55
+Jump_Height = 4.0
+Jump_Distance = 8.0
+Coyote_Time = 0.1
+air_cap = 1.4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1.50575, 2.08165e-12)
+shape = SubResource("CapsuleShape3D_eaa8y")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.08165e-12, 1.00739, 2.08165e-12)
+visible = false
+shape = SubResource("CylinderShape3D_d2lma")
+disabled = true
+
+[node name="CameraHolder" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.76417, 0)
+rotation_order = 0
+script = ExtResource("2_ovw0s")
+
+[node name="WeaponHolder" type="Node3D" parent="CameraHolder"]
+transform = Transform3D(1, 0, 0, 0, 0.998797, -0.0490415, 0, 0.0490415, 0.998797, 0.551952, -0.576226, -1.22638)
+
+[node name="shotgunbetter" parent="CameraHolder/WeaponHolder" instance=ExtResource("3_7cgrg")]
+unique_name_in_owner = true
+transform = Transform3D(-5.42999e-07, 5.23182e-17, 0.15, 5.23181e-17, 0.15, -5.23181e-17, -0.15, 5.23179e-17, -5.42999e-07, 2.08165e-12, 2.08165e-12, 2.08165e-12)
+visible = false
+
+[node name="Pistolbetter" parent="CameraHolder/WeaponHolder" instance=ExtResource("4_2c5mb")]
+unique_name_in_owner = true
+
+[node name="knife" parent="CameraHolder/WeaponHolder" instance=ExtResource("4_3qsl6")]
+unique_name_in_owner = true
+transform = Transform3D(0.0978953, -0.579442, 0.809115, -0.985717, -0.168426, -0.00135322, 0.137062, -0.797424, -0.587653, -0.0171627, 0.348865, -0.000610948)
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CameraHolder/WeaponHolder"]
+transform = Transform3D(1, -2.7666e-16, 2.34968e-15, 1.61095e-16, 0.998797, 0.0490415, -2.36042e-15, -0.0490415, 0.998797, -1.67184, -0.0302548, -0.0234299)
+light_color = Color(1, 0.684261, 0.475416, 1)
+light_cull_mask = 4293918722
+omni_range = 2.612
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="CameraHolder/WeaponHolder"]
+transform = Transform3D(1, -2.7666e-16, 2.34968e-15, 1.61095e-16, 0.998797, 0.0490415, -2.36042e-15, -0.0490415, 0.998797, 1.29052, 0.188611, -0.306891)
+light_color = Color(1, 0.684261, 0.475416, 1)
+light_cull_mask = 4293918722
+omni_range = 2.612
+
+[node name="Camera3D" type="Camera3D" parent="CameraHolder"]
+unique_name_in_owner = true
+fov = 100.0
+
+[node name="RayContainer" type="Node3D" parent="CameraHolder/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 5.60001e-10, 0, -4.99955e-10, 1, 0, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="CameraHolder/Camera3D/RayContainer"]
+target_position = Vector3(2.08165e-12, 2.08165e-12, -50)
+
+[node name="RayCast3D2" type="RayCast3D" parent="CameraHolder/Camera3D/RayContainer"]
+target_position = Vector3(2.08165e-12, 2.08165e-12, -50)
+
+[node name="RayCast3D3" type="RayCast3D" parent="CameraHolder/Camera3D/RayContainer"]
+target_position = Vector3(2.08165e-12, 2.08165e-12, -50)
+
+[node name="RayCast3D4" type="RayCast3D" parent="CameraHolder/Camera3D/RayContainer"]
+target_position = Vector3(2.08165e-12, 2.08165e-12, -50)
+
+[node name="RayCast3D5" type="RayCast3D" parent="CameraHolder/Camera3D/RayContainer"]
+target_position = Vector3(2.08165e-12, 2.08165e-12, -50)
+
+[node name="RayCast3D6" type="RayCast3D" parent="CameraHolder/Camera3D/RayContainer"]
+target_position = Vector3(2.08165e-12, 2.08165e-12, -50)
+
+[node name="RayCast3D7" type="RayCast3D" parent="CameraHolder/Camera3D/RayContainer"]
+target_position = Vector3(2.08165e-12, 2.08165e-12, -50)
+
+[node name="RayCast3D8" type="RayCast3D" parent="CameraHolder/Camera3D/RayContainer"]
+target_position = Vector3(2.08165e-12, 2.08165e-12, -50)
+
+[node name="RayCast3D9" type="RayCast3D" parent="CameraHolder/Camera3D/RayContainer"]
+target_position = Vector3(2.08165e-12, 2.08165e-12, -50)
+
+[node name="RayCast3D10" type="RayCast3D" parent="CameraHolder/Camera3D/RayContainer"]
+target_position = Vector3(2.08165e-12, 2.08165e-12, -50)
+
+[node name="RayCast3D11" type="RayCast3D" parent="CameraHolder/Camera3D/RayContainer"]
+target_position = Vector3(2.08165e-12, 2.08165e-12, -50)
+
+[node name="RayCast3D12" type="RayCast3D" parent="CameraHolder/Camera3D/RayContainer"]
+target_position = Vector3(2.08165e-12, 2.08165e-12, -50)
+
+[node name="RayCast3D13" type="RayCast3D" parent="CameraHolder/Camera3D/RayContainer"]
+target_position = Vector3(2.08165e-12, 2.08165e-12, -50)
+
+[node name="RayContainerPistol" type="Node3D" parent="CameraHolder/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 5.60001e-10, 0, -4.99955e-10, 1, 0, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="CameraHolder/Camera3D/RayContainerPistol"]
+target_position = Vector3(2.08165e-12, 2.08165e-12, -100)
+
+[node name="Coyote_timer" type="Timer" parent="."]
+wait_time = 0.3
+
+[node name="Weaponswitchtimer" type="Timer" parent="."]
+
+[node name="Hud" parent="." instance=ExtResource("5_b21fg")]
+unique_name_in_owner = true
+mouse_filter = 2
+script = ExtResource("6_kitx0")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Hud"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.5
+offset_top = -10.5
+offset_right = 56.5
+offset_bottom = 90.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BacktoGame" type="Button" parent="Hud/VBoxContainer"]
+layout_mode = 2
+text = "Back to game"
+
+[node name="Options" type="Button" parent="Hud/VBoxContainer"]
+layout_mode = 2
+text = "options
+"
+
+[node name="ExitToMainMenu" type="Button" parent="Hud/VBoxContainer"]
+layout_mode = 2
+text = "Exit to Menu"
+
+[node name="speed_label" type="Label" parent="Hud"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.742
+anchor_right = 0.5
+anchor_bottom = 0.742
+offset_left = -75.0
+offset_top = -29.16
+offset_right = 75.0
+offset_bottom = 28.84
+grow_horizontal = 2
+grow_vertical = 0
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="ammo_label" type="Label" parent="Hud"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -75.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ammo_labelpistol" type="Label" parent="Hud"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -151.0
+offset_top = -134.0
+offset_right = -1.0
+offset_bottom = -59.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="show_key_binds" type="Label" parent="Hud"]
+visible = false
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -139.0
+offset_top = 14.0
+offset_right = -6.0
+offset_bottom = 186.0
+grow_horizontal = 0
+text = "Show Velocity: P
+Toggle noclip: V
+Reset Game: ."
+
+[node name="info_at_start" type="Label" parent="Hud"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -87.0
+offset_top = 27.0
+offset_right = 87.0
+offset_bottom = 59.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 23
+text = "Press H for help"
+
+[node name="Crosshair" type="TextureRect" parent="Hud"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_i3vt7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_430lx")
+}
+
+[node name="WalkTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="FootstepsAudio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_u8ywf")
+bus = &"footsteps"
+
+[connection signal="timeout" from="Coyote_timer" to="." method="Coyote_timeout"]
+[connection signal="pressed" from="Hud/VBoxContainer/BacktoGame" to="Hud" method="_on_backto_game_pressed"]
+[connection signal="pressed" from="Hud/VBoxContainer/ExitToMainMenu" to="Hud" method="_on_exit_to_main_menu_pressed"]

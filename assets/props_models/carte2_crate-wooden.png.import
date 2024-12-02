@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://b22ogqqrku1nm"
+path.s3tc="res://.godot/imported/carte2_crate-wooden.png-4a010c1019360fb27bbc15ec378cc30e.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "1b8422f7095fa38699e8d6915b60b54e"
+}
+
+[deps]
+
+source_file="res://assets/props_models/carte2_crate-wooden.png"
+dest_files=["res://.godot/imported/carte2_crate-wooden.png-4a010c1019360fb27bbc15ec378cc30e.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdlpi0akaqtnv"]
+
+[ext_resource type="Script" path="res://scripts/bullet_decal.gd" id="1_nhqg7"]
+[ext_resource type="Texture2D" uid="uid://doar6kqaqhh6b" path="res://textures/decals/bullet_hole.png" id="2_i5yoo"]
+
+[sub_resource type="Curve" id="Curve_2aj8q"]
+max_value = 2.0
+_data = [Vector2(0.248705, 1.27365), 0.0, -4.49057, 0, 0, Vector2(0.984456, 0.0268369), -1.59351, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ld5qd"]
+curve = SubResource("Curve_2aj8q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e1bvk"]
+radial_velocity_min = 8.0
+radial_velocity_max = 10.0
+radial_velocity_curve = SubResource("CurveTexture_ld5qd")
+gravity = Vector3(2.08165e-12, 2.08165e-12, 2.08165e-12)
+scale_min = 0.05
+scale_max = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4loae"]
+albedo_color = Color(0.572669, 9.64857e-07, 7.22551e-08, 1)
+roughness = 0.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_3kkam"]
+material = SubResource("StandardMaterial3D_4loae")
+
+[node name="Node3D" type="Node3D"]
+transform = Transform3D(1, 0, -1.5246e-23, -1.5246e-23, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_nhqg7")
+
+[node name="Decal" type="Decal" parent="."]
+transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 0, 0, 0)
+size = Vector3(0.6, 0.6, 0.6)
+texture_albedo = ExtResource("2_i5yoo")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
+amount = 80
+lifetime = 0.3
+one_shot = true
+explosiveness = 0.97
+process_material = SubResource("ParticleProcessMaterial_e1bvk")
+draw_pass_1 = SubResource("BoxMesh_3kkam")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

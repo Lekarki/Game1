@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dd0ln1bmy1kx6"]
+
+[ext_resource type="Texture2D" uid="uid://coi7ai72ce8mb" path="res://textures/clip.png" id="1_5ojan"]
+
+[resource]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+albedo_texture = ExtResource("1_5ojan")

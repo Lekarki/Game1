@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://b8uc5xi12aefh"]
+
+[resource]
+depth_draw_mode = 1
+emission_enabled = true
+emission = Color(0.992157, 0.972549, 0.368627, 1)
+emission_energy_multiplier = 3.95
